@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	export let data: { users: { id?: string; username?: string;}[] };
+</script>
+
+{#if data?.users?.length}
+	<ul>
+		{#each data.users as user (user.id)}
+			<li>{user.id} ({user.username})</li>
+		{/each}
+	</ul>
+{:else}
+	<p>No users found.</p>
+{/if}
